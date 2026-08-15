@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Design tokens
+   Fonte única de verdade para cores, espaçamentos, tipografia e elevações.
+   Todos os valores foram extraídos do tema original (Tailwind config inline).
+   ========================================================================== */
+
+:root {
+  /* --- Superfícies claras ------------------------------------------------ */
+  --color-background: #f9f9f9;
+  --color-surface: #f9f9f9;
+  --color-surface-low: #f3f3f3;
+  --color-surface-container: #eeeeee;
+  --color-surface-highest: #e2e2e2;
+  --color-surface-dim: #dadada;
+
+  --color-on-surface: #1a1c1c;
+  --color-on-surface-variant: #434655;
+  --color-on-surface-muted: #6e6d6d;
+
+  --color-outline-variant: #c3c6d7;
+
+  /* --- Marca -------------------------------------------------------------- */
+  --color-primary: #004bc6;
+  --color-primary-container: #2463eb;
+  --color-primary-light: #b4c5ff;
+
+  --color-accent: #3ca62a;          /* verde estrutural — todos os CTAs */
+  --color-accent-hover: #34901f;
+  --color-accent-light: #73de5c;
+  --color-on-accent: #ffffff;
+
+  /* --- Superfícies escuras ------------------------------------------------ */
+  --color-dark: #1a1c1c;
+  --color-darker: #080808;
+  --color-dark-card: #141414;
+  --color-dark-border: #333333;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #a0a0a0;
+
+  --color-inverse-surface: #2f3131;
+  --color-inverse-on-surface: #f1f1f1;
+
+  /* --- Feedback ----------------------------------------------------------- */
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-error: #ba1a1a;
+  --color-success-container: #d7f8cd;
+  --color-on-success-container: #0b6e00;
+
+  /* --- Espaçamento (escala de 4px) ---------------------------------------- */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+  --space-2xl: 96px;
+
+  --gutter: 24px;
+  --page-margin: 20px;            /* redefinido no breakpoint desktop */
+  --container-max: 1280px;
+  --header-height: 80px;
+
+  /* --- Tipografia --------------------------------------------------------- */
+  --font-headline: "Montserrat", "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Escalas fluidas: mesmos extremos mobile/desktop do layout original. */
+  --text-headline-lg: clamp(2rem, 4vw + 1rem, 3.625rem);  /* 32px  -> 58px */
+  --text-headline-md: 1.5rem;                             /* 24px */
+  --text-title: 1.1875rem;                                /* 19px */
+  --text-lead: clamp(1.0625rem, 0.5vw + 1rem, 1.25rem);   /* 17px  -> 20px */
+  --text-body: 1rem;                                      /* 16px */
+  --text-small: 0.875rem;                                 /* 14px */
+  --text-label: 0.75rem;                                  /* 12px */
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.25;
+  --leading-normal: 1.6;
+
+  /* --- Formas e elevações -------------------------------------------------- */
+  --radius: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-technical: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* --- Movimento ----------------------------------------------------------- */
+  --transition: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-margin: 40px;
+  }
+}

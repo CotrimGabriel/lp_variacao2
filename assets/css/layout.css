@@ -1,0 +1,391 @@
+/* ==========================================================================
+   Layout — cabeçalho, navegação, seções, grades e rodapé
+   ========================================================================== */
+
+/* --- Cabeçalho fixo --------------------------------------------------------- */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), background-color var(--transition);
+}
+
+/* Classe aplicada por assets/js/nav.js após o scroll inicial. */
+.site-header.is-scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  height: var(--header-height);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-headline);
+  font-size: var(--text-headline-md);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  color: var(--color-primary);
+}
+
+.brand:hover {
+  color: var(--color-primary-container);
+}
+
+/* Compensa a altura do cabeçalho fixo. */
+.site-main {
+  padding-top: var(--header-height);
+}
+
+/* --- Navegação -------------------------------------------------------------- */
+
+.nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: none;
+  border: 1px solid var(--color-surface-dim);
+  border-radius: var(--radius-lg);
+  color: var(--color-on-surface);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-surface-container);
+}
+
+.nav-toggle .icon--close,
+.nav-toggle[aria-expanded="true"] .icon--menu {
+  display: none;
+}
+
+.nav-toggle[aria-expanded="true"] .icon--close {
+  display: inline-block;
+}
+
+.site-nav {
+  display: none;
+  position: absolute;
+  inset: var(--header-height) 0 auto 0;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--page-margin);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-outline-variant);
+  box-shadow: var(--shadow-md);
+}
+
+.site-nav.is-open {
+  display: flex;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.site-nav__link {
+  display: block;
+  padding: var(--space-sm) 0;
+  color: var(--color-on-surface-variant);
+  font-weight: 500;
+}
+
+.site-nav__link:hover {
+  color: var(--color-primary);
+}
+
+.site-nav__link[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+@media (min-width: 900px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav,
+  .site-nav.is-open {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: none;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .site-nav__link {
+    padding: var(--space-xs) 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .site-nav__link[aria-current="page"] {
+    border-bottom-color: var(--color-primary);
+  }
+}
+
+/* Estado inicial do HTML: sem JavaScript o menu é uma barra estática, sempre
+   navegável. A classe é removida por assets/js/nav.js, que então assume o
+   controle do menu sanfonado. */
+.site-header--no-js .site-header__inner {
+  height: auto;
+  flex-wrap: wrap;
+  padding-block: var(--space-sm);
+}
+
+.site-header--no-js .nav-toggle {
+  display: none;
+}
+
+.site-header--no-js .site-nav {
+  display: flex;
+  position: static;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.site-header--no-js .site-nav__list {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+/* --- Seções ----------------------------------------------------------------- */
+
+.section {
+  padding-block: var(--space-xl);
+  background-color: var(--color-surface);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-2xl);
+  }
+}
+
+.section--alt {
+  background-color: var(--color-surface-low);
+  border-block: 1px solid var(--color-surface-dim);
+}
+
+.section--bordered {
+  border-bottom: 1px solid var(--color-surface-dim);
+}
+
+.section--dark {
+  background-color: var(--color-dark);
+  color: var(--color-on-dark);
+  border-block: 1px solid var(--color-dark-border);
+}
+
+.section--darker {
+  background-color: var(--color-darker);
+  color: var(--color-on-dark);
+  border-block: 1px solid var(--color-dark-border);
+}
+
+.section--dark :is(h1, h2, h3),
+.section--darker :is(h1, h2, h3) {
+  color: var(--color-on-dark);
+}
+
+.section__header {
+  max-width: 46rem;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.section__header > h2 {
+  margin-bottom: var(--space-md);
+}
+
+/* Fundos "planta baixa" — herdados do design original. */
+.blueprint-bg {
+  background-color: var(--color-surface);
+  background-image:
+    linear-gradient(var(--color-surface-highest) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-surface-highest) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-bg--dark {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Grades ------------------------------------------------------------------ */
+
+.grid {
+  display: grid;
+  gap: var(--gutter);
+}
+
+@media (min-width: 640px) {
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid--4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Bloco de duas colunas (texto + imagem). */
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.split__col {
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .split {
+    flex-direction: row;
+    gap: var(--space-2xl);
+  }
+
+  .split--reverse {
+    flex-direction: row-reverse;
+  }
+
+  .split__col--half {
+    width: 50%;
+  }
+
+  .split__col--two-fifths {
+    width: 40%;
+  }
+
+  .split__col--three-fifths {
+    width: 60%;
+  }
+}
+
+/* --- Rodapé ------------------------------------------------------------------ */
+
+.site-footer {
+  background-color: var(--color-inverse-surface);
+  color: var(--color-inverse-on-surface);
+  border-top: 1px solid var(--color-dark-border);
+}
+
+.site-footer__cta {
+  padding-block: var(--space-xl);
+  border-bottom: 1px solid var(--color-dark-border);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .site-footer__cta {
+    padding-block: var(--space-2xl);
+  }
+}
+
+.site-footer__cta h2 {
+  margin-bottom: var(--space-md);
+  font-size: var(--text-headline-md);
+  color: var(--color-on-dark);
+}
+
+.site-footer__cta p {
+  margin-bottom: var(--space-lg);
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+  padding-block: var(--space-xl);
+  text-align: center;
+}
+
+.site-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-headline);
+  font-size: var(--text-title);
+  font-weight: 700;
+  color: var(--color-inverse-on-surface);
+}
+
+.site-footer__copyright {
+  margin: 0;
+  font-size: var(--text-small);
+  opacity: 0.7;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.site-footer__links a {
+  color: var(--color-inverse-on-surface);
+  font-size: var(--text-small);
+}
+
+.site-footer__links a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+  .site-footer__bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    text-align: left;
+  }
+
+  .site-footer__links {
+    justify-content: flex-end;
+  }
+}
