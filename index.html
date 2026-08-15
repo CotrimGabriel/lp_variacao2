@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="pt-BR" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Meia-Um Engenharia e Consultoria | Regularização e Projetos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&amp;family=Inter:wght@400;500;700&amp;family=Jetbrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..900&amp;family=Montserrat:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .blueprint-bg {
+            background-color: #f9f9f9;
+            background-image: linear-gradient(#e2e2e2 1px, transparent 1px), linear-gradient(90deg, #e2e2e2 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .dark-blueprint-bg {
+            background-color: #1a1c1c;
+            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        
+        .technical-shadow {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+
+        .seal-rotate {
+            transform: rotate(-8deg);
+        }
+        
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px; /* Arbitrary large max-height */
+            opacity: 1;
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-icon.active {
+            transform: rotate(180deg);
+        }
+    </style>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"surface-container": "#eeeeee", "surface-tint": "#0053da", "surface-container-highest": "#e2e2e2", secondary: "#0b6e00", "outline-variant": "#c3c6d7", "secondary-container": "#8cf872", "inverse-on-surface": "#f1f1f1", "on-background": "#1a1c1c", "tertiary-container": "#6e6d6d", "on-surface-variant": "#434655", "on-secondary": "#ffffff", "on-tertiary-fixed-variant": "#474646", "on-error-container": "#93000a", "on-error": "#ffffff", "surface-variant": "#e2e2e2", "on-primary-fixed-variant": "#003ea7", "surface-container-low": "#f3f3f3", tertiary: "#565554", "on-secondary-fixed": "#012200", "tertiary-fixed": "#e5e2e1", "on-primary-container": "#eeefff", "primary-container": "#2463eb", "on-secondary-container": "#0c7300", "on-secondary-fixed-variant": "#065300", "surface-dim": "#dadada", "tertiary-fixed-dim": "#c9c6c5", "surface-container-lowest": "#ffffff", "surface-container-high": "#e8e8e8", "on-primary-fixed": "#00174b", "secondary-fixed-dim": "#73de5c", surface: "#f9f9f9", "primary-fixed-dim": "#b4c5ff", "error-container": "#ffdad6", "secondary-fixed": "#8ffb75", "on-primary": "#ffffff", "primary-fixed": "#dbe1ff", "inverse-primary": "#b4c5ff", outline: "#737686", "on-tertiary-container": "#f3f0ef", "surface-bright": "#f9f9f9", "on-surface": "#1a1c1c", background: "#f9f9f9", primary: "#004bc6", error: "#ba1a1a", "on-tertiary": "#ffffff", "on-tertiary-fixed": "#1c1b1b", "inverse-surface": "#2f3131"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}, spacing: {sm: "8px", xl: "48px", "margin-mobile": "20px", base: "4px", gutter: "24px", lg: "24px", "margin-desktop": "40px", "2xl": "96px", md: "16px", xs: "4px"}, fontFamily: {"display-lg-mobile": ["Montserrat"], "title-md": ["Montserrat"], "display-lg": ["Montserrat"], "label-mono": ["JetBrains Mono"], "headline-lg": ["Montserrat"], "headline-md": ["Montserrat"], "body-lead": ["Inter"], "body-base": ["Inter"], "headline-lg-mobile": ["Montserrat"], headline: ["Poppins"], display: ["Poppins"], body: ["Inter"], label: ["Jetbrains Mono"]}, fontSize: {"display-lg-mobile": ["42px", {lineHeight: "1.10", letterSpacing: "-0.02em", fontWeight: "800"}], "title-md": ["19px", {lineHeight: "1.25", letterSpacing: "-0.01em", fontWeight: "700"}], "display-lg": ["84px", {lineHeight: "1.08", letterSpacing: "-0.025em", fontWeight: "800"}], "label-mono": ["12px", {lineHeight: "1.00", letterSpacing: "0.1em", fontWeight: "700"}], "headline-lg": ["58px", {lineHeight: "1.10", letterSpacing: "-0.025em", fontWeight: "800"}], "headline-md": ["24px", {lineHeight: "1.20", letterSpacing: "-0.015em", fontWeight: "800"}], "body-lead": ["20px", {lineHeight: "1.50", fontWeight: "500"}], "body-base": ["16px", {lineHeight: "1.60", fontWeight: "400"}], "headline-lg-mobile": ["32px", {lineHeight: "1.15", letterSpacing: "-0.02em", fontWeight: "800"}]}}}};</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-base antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface border-b border-outline-variant shadow-sm fixed top-0 w-full z-50 transition-all duration-200" id="main-nav">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop h-20">
+<!-- Brand -->
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">Meia-Um</span>
+</div>
+<!-- Navigation (Hidden on Mobile, Action button visible) -->
+<nav class="hidden md:flex items-center gap-lg">
+<!-- Suppressed for landing page intent, showing action instead -->
+<a class="bg-[#3CA62A] text-on-secondary font-bold py-md px-lg hover:-translate-y-[2px] transition-transform duration-200 technical-shadow flex items-center gap-xs rounded-full" href="#contato">
+                    Contact Us <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</nav>
+<!-- Mobile Action -->
+<div class="flex md:hidden items-center gap-sm">
+<a class="bg-[#3CA62A] text-on-secondary font-bold py-sm px-md text-sm hover:-translate-y-[2px] transition-transform duration-200 flex items-center gap-xs rounded-full" href="#contato">
+                    Contact Us
+                </a>
+</div>
+</div>
+</header>
+<main class="pt-24 md:pt-20">
+<!-- 1. Hero Section -->
+<section class="relative blueprint-bg pt-xl pb-2xl px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-surface-dim">
+<!-- Background Decoration -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="bg-cover bg-center w-full h-full" data-alt="A highly detailed architectural blueprint of a modern building, displayed as an abstract technical background. The image should feature precise CAD-like linework, technical annotations, and cross-sections in a clean, high-key white-label environment with subtle blueprint blue (#2463EB) accents. The mood is analytical, systematic, and professional, conveying engineering rigor and structural clarity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBb2ERYTJ3eOTmX_SdpuUbStEQvCeZCio4uFn96z2rifVP48GfyR-N6V0fjCZaPJ0p2_rVckkynfknySbMrVbypu3dBprUkTqKeLUipE-nyh0jObumoUZoIz3SyYxw_SK5SXyYq6qXXWvu3mWVJMlFFK_uzO3INNu2wxFmCM_F-9IQiqxrGSMWNZNYWXWcLVzoHJfFYbS5VPDlMmwh8RMSy_DMX80B-BRMR8yzHlQCkoZlioWAwdqMl')"></div>
+</div>
+<div class="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+<div class="inline-flex items-center gap-xs bg-surface-container-low border border-surface-dim px-sm py-xs rounded-full mb-lg">
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background max-w-4xl mx-auto">
+                    Entregamos o Habite-se do seu imóvel de forma rápida e segura.<div><br><div>&nbsp; <br class="hidden md:block">
+</div></div></h1>
+<p class="font-body-lead text-body-lead text-on-surface-variant max-w-2xl mx-auto mb-xl"></p><div class="mb-md"><div class=""><span style="white-space:pre"> </span>Não deixe a falta da Carta de Habite-se te atrapalhar. A Meia Um resolve do início ao fim, com acompanhamento técnico e garantia de aprovação.</div></div><p></p>
+<div class="flex flex-wrap justify-center gap-sm mb-lg">
+
+
+
+</div>
+<a class="w-full md:w-auto bg-[#3CA62A] text-on-secondary font-title-md text-title-md py-md px-2xl hover:-translate-y-[2px] transition-transform duration-200 technical-shadow flex items-center justify-center gap-sm rounded-full" href="#contato">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+                    Falar com especialista&nbsp;</a>
+<p class="font-label-mono text-label-mono text-tertiary-container text-center mt-lg">
+<span class="material-symbols-outlined text-[14px] align-middle mr-xs text-[#3CA62A]">check_circle</span>Visita para avaliação incial gratuita</p>
+<!-- Technical Seal -->
+<div class="absolute -right-4 top-0 md:right-12 md:top-12 seal-rotate bg-surface border-2 border-[#3CA62A] rounded-full w-24 h-24 flex items-center justify-center technical-shadow pointer-events-none hidden md:flex">
+<div class="text-center">
+<span class="material-symbols-outlined text-[#3CA62A] block mb-1">workspace_premium</span>
+<span class="font-label-mono text-[10px] font-bold text-[#3CA62A] leading-tight block">100%<br>GARANTIA<br>TÉCNICA</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Alert Banner -->
+<div class="bg-error-container border-y border-on-error-container/20 py-md px-margin-mobile md:px-margin-desktop">
+<div class="max-w-7xl mx-auto flex items-center justify-center gap-sm text-on-error-container text-center">
+<span class="material-symbols-outlined">warning</span>
+<p class="font-body-base text-body-base font-medium">
+<strong>Imóvel sem regularização perde valor e bloqueia venda, financiamento e herança.</strong> Quanto antes você resolver, mais você protege seu patrimônio.
+                </p>
+</div>
+</div>
+<!-- 2. O que resolvemos -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-on-background text-on-secondary relative dark-blueprint-bg border-b border-[#333333]"><div class="max-w-7xl mx-auto">
+<div class="mb-xl text-center">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-secondary mb-md">Por que a Meia Um é a melhor escolha?</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Card 1: Expertise técnica -->
+<div class="bg-[#141414] border border-[#333333] rounded-xl p-lg hover:border-primary-container transition-colors duration-300 group">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center mb-md group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">architecture</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-sm">Expertise técnica</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0]">
+                Equipe especializada em Habite-se no DF. Arquiteto especialista acompanhando cada detalhe.
+            </p>
+</div>
+<!-- Card 2: Agilidade real -->
+<div class="bg-[#141414] border border-[#333333] rounded-xl p-lg hover:border-primary-container transition-colors duration-300 group">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center mb-md group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">speed</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-sm">Agilidade real</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0]">
+                Processo organizado do início ao fim. Menos retrabalho, menos espera, mais resultado.
+            </p>
+</div>
+<!-- Card 3: Portal do Cliente -->
+<div class="bg-[#141414] border border-[#333333] rounded-xl p-lg hover:border-primary-container transition-colors duration-300 group">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center mb-md group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">grid_view</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-sm">Portal do Cliente</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0]">
+                Acompanhamento em tempo real com atualizações e notificações de cada etapa.
+            </p>
+</div>
+<!-- Card 4: Risco Zero -->
+<div class="bg-[#141414] border border-[#333333] rounded-xl p-lg hover:border-primary-container transition-colors duration-300 group">
+<div class="w-12 h-12 bg-primary-container/20 rounded-lg flex items-center justify-center mb-md group-hover:bg-primary-container/30 transition-colors">
+<span class="material-symbols-outlined text-primary-fixed-dim">verified_user</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-sm">Risco Zero</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0]">
+                Assumimos o risco junto com você. Processo transparente, sem surpresas ou custos ocultos.
+            </p>
+</div>
+</div>
+</div></section>
+<!-- 3. Por que isso importa -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-2xl items-center">
+<div class="w-full md:w-1/2">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-sm block">Por que isso importa</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-md">
+                        Um imóvel irregular é um <span class="text-primary">passivo em risco.</span>
+</h2>
+<p class="font-body-lead text-body-lead text-on-surface-variant mb-lg">
+                        Sem regularização técnica e jurídica, você não pode vender, financiar ou alugar com segurança. O imóvel não existe formalmente, gerando multas e desvalorização.
+                    </p>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm p-sm bg-surface-container-low rounded-lg border border-surface-dim">
+<span class="material-symbols-outlined text-[#3CA62A] mt-1">trending_up</span>
+<div>
+<strong class="font-title-md text-title-md block mb-xs">Valorização Imediata</strong>
+<span class="font-body-base text-body-base text-on-surface-variant">Imóvel regularizado vale mais e tem liquidez no mercado.</span>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm bg-surface-container-low rounded-lg border border-surface-dim">
+<span class="material-symbols-outlined text-[#3CA62A] mt-1">shield_lock</span>
+<div>
+<strong class="font-title-md text-title-md block mb-xs">Segurança Jurídica</strong>
+<span class="font-body-base text-body-base text-on-surface-variant">Protege contra disputas familiares, invasões e multas da prefeitura.</span>
+</div>
+</li>
+<li class="flex items-start gap-sm p-sm bg-surface-container-low rounded-lg border border-surface-dim">
+<span class="material-symbols-outlined text-[#3CA62A] mt-1">real_estate_agent</span>
+<div>
+<strong class="font-title-md text-title-md block mb-xs">Acesso a Crédito</strong>
+<span class="font-body-base text-body-base text-on-surface-variant">Documentação em dia permite financiamento e venda via consórcio.</span>
+</div>
+</li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 relative rounded-xl overflow-hidden border border-surface-dim shadow-sm h-[500px]">
+<div class="bg-cover bg-center w-full h-full" data-alt="A clean, minimalist high-key photograph showing an architect or engineer's desk. There are rolled-up architectural blueprints, a modern tablet displaying a CAD 3D model of a house, and a sleek pen. The lighting is bright, natural, and soft, creating a professional, analytical mood. The dominant colors are pure white, light gray, with sharp accents of blueprint blue (#2463EB) and structural green (#3CA62A)." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOA8k8QM53Mp_iJsLjAzpFEkK7W_QsTMcMe_57TRSgWQs3LQNkEMNNq908hbx2wTFKgm8_3KpR9f90YtV8_DD_wI7Xza1VLM1TqAwfTDl0aH6b8v3nQK2RICewHOHxHoYmTN0c2_mcsK7FhKyQ5JzfPo8EMIuaVWBDAK2apg__bmc0klwk2uEf4P-PH0y3_EdrUfwziz4INgsWI-_JyrsyZq_Mq6UzbP_TVbAT3v-K0tCI2zY06R_6')"></div>
+</div>
+</div>
+</section>
+<!-- 4. Situações que atendemos (Bento Grid) -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-surface-dim">
+<div class="max-w-7xl mx-auto text-center mb-xl">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-sm block">Situações de Risco</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-md">
+                    Você está em algum <br class="hidden md:block">destes casos?
+                </h2>
+<p class="font-body-lead text-body-lead text-on-surface-variant max-w-2xl mx-auto">
+                    Cada situação tem uma solução técnica específica. Nossa equipe multidisciplinar identifica o caminho mais seguro e econômico.
+                </p>
+</div>
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Falecimento -->
+<div class="bg-surface border border-surface-dim rounded-xl p-lg flex flex-col items-center text-center hover:border-primary hover:shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">sentiment_dissatisfied</span>
+</div>
+<h3 class="font-title-md text-title-md mb-sm">Falecimento sem inventário</h3>
+<p class="font-body-base text-body-base text-on-surface-variant">
+                        Pai, mãe ou cônjuge faleceu e o imóvel tá no nome do falecido. Os bens ficam travados.
+                    </p>
+</div>
+<!-- Contrato de gaveta -->
+<div class="bg-surface border border-surface-dim rounded-xl p-lg flex flex-col items-center text-center hover:border-primary hover:shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">contract</span>
+</div>
+<h3 class="font-title-md text-title-md mb-sm">Imóvel comprado sem escritura</h3>
+<p class="font-body-base text-body-base text-on-surface-variant">
+                        Compra por contrato de gaveta ou cessão de direitos. O imóvel não está no seu nome.
+                    </p>
+</div>
+<!-- Construção sem habite-se -->
+<div class="bg-surface border border-surface-dim rounded-xl p-lg flex flex-col items-center text-center hover:border-primary hover:shadow-md transition-all duration-300">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-tertiary-container text-3xl">foundation</span>
+</div>
+<h3 class="font-title-md text-title-md mb-sm">Construção sem habite-se</h3>
+<p class="font-body-base text-body-base text-on-surface-variant">
+                        Casa ou ampliação construída sem laudo ou sem averbação na matrícula do cartório.
+                    </p>
+</div>
+</div>
+<div class="max-w-7xl mx-auto text-center mt-xl">
+<a class="inline-flex items-center gap-xs bg-surface border border-surface-dim px-md py-sm rounded-lg font-label-mono text-label-mono text-primary hover:bg-surface-container transition-colors" href="#contato">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                    Avaliar meu caso gratuitamente
+                </a>
+</div>
+</section>
+<!-- 6. Nosso Processo (Dark Timeline) -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-[#080808] text-on-secondary dark-blueprint-bg border-y border-[#333333]">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-2xl">
+<span class="font-label-mono text-label-mono text-primary-fixed-dim uppercase tracking-widest mb-sm block">Rigor Metodológico</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-secondary mb-md">Como funciona o atendimento</h2>
+<p class="font-body-lead text-body-lead text-[#a0a0a0]">
+                        Do primeiro contato até o imóvel regularizado no seu nome, aplicando engenharia legal com precisão.
+                    </p>
+</div>
+<div class="relative border-l-2 border-[#333333] ml-md md:ml-[50%] md:-translate-x-px space-y-xl">
+<!-- Step 1 -->
+<div class="relative pl-lg md:pl-0 md:w-1/2 md:pr-lg md:text-right flex flex-col md:items-end">
+<div class="absolute -left-[17px] md:-right-[17px] md:left-auto top-0 w-8 h-8 bg-[#141414] border-2 border-primary-container rounded-full flex items-center justify-center font-label-mono text-label-mono text-primary-fixed-dim z-10">1</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-xs">Consulta técnica</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0] mb-sm">
+                            Avaliamos o estado atual da construção e da documentação. Sem custo inicial.
+                        </p>
+<span class="inline-block bg-[#1a1c1c] border border-[#333333] text-[#73de5c] font-label-mono text-[10px] px-2 py-1 rounded">Online ou Presencial</span>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-lg md:pl-0 md:w-1/2 md:ml-auto md:pl-lg flex flex-col md:items-start">
+<div class="absolute -left-[17px] top-0 w-8 h-8 bg-[#141414] border-2 border-primary-container rounded-full flex items-center justify-center font-label-mono text-label-mono text-primary-fixed-dim z-10">2</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-xs">Levantamento e Diagnóstico</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0] mb-sm">
+                            Nossa equipe de engenharia e direito faz a varredura completa nas matrículas, projetos e prefeitura.
+                        </p>
+<span class="inline-block bg-[#1a1c1c] border border-[#333333] text-primary-fixed-dim font-label-mono text-[10px] px-2 py-1 rounded">Análise de Viabilidade</span>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-lg md:pl-0 md:w-1/2 md:pr-lg md:text-right flex flex-col md:items-end">
+<div class="absolute -left-[17px] md:-right-[17px] md:left-auto top-0 w-8 h-8 bg-[#141414] border-2 border-primary-container rounded-full flex items-center justify-center font-label-mono text-label-mono text-primary-fixed-dim z-10">3</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-xs">Elaboração de Laudos</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0] mb-sm">
+                            Produzimos as plantas, memoriais descritivos, ARTs e peças jurídicas necessárias.
+                        </p>
+<span class="inline-block bg-[#1a1c1c] border border-[#333333] text-primary-fixed-dim font-label-mono text-[10px] px-2 py-1 rounded">Engenharia Legal</span>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-lg md:pl-0 md:w-1/2 md:ml-auto md:pl-lg flex flex-col md:items-start">
+<div class="absolute -left-[17px] top-0 w-8 h-8 bg-[#141414] border-2 border-primary-container rounded-full flex items-center justify-center font-label-mono text-label-mono text-primary-fixed-dim z-10">4</div>
+<h3 class="font-title-md text-title-md text-on-secondary mb-xs">Aprovação e Registro</h3>
+<p class="font-body-base text-body-base text-[#a0a0a0] mb-sm">
+                            Protocolo em prefeituras e cartórios. Imóvel regularizado e transferido pro seu nome com segurança total.
+                        </p>
+<span class="inline-block bg-[#1a1c1c] border border-[#333333] text-[#73de5c] font-label-mono text-[10px] px-2 py-1 rounded">Conclusão Garantida</span>
+</div>
+</div>
+<div class="text-center mt-xl">
+<a class="inline-block w-full md:w-auto bg-[#3CA62A] text-on-secondary font-title-md text-title-md py-md px-2xl hover:-translate-y-[2px] transition-transform duration-200 technical-shadow rounded-full" href="#contato">
+                        Iniciar processo
+                    </a>
+</div>
+</div>
+</section>
+<!-- 8. Especialista -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-surface border-b border-surface-dim">
+<div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-xl">
+<div class="w-full md:w-2/5 relative">
+<!-- Photo placeholder -->
+<div class="aspect-[3/4] rounded-xl overflow-hidden border border-surface-dim shadow-sm relative">
+<div class="bg-cover bg-center w-full h-full" data-alt="A professional portrait of a confident male lead engineer or technical consultant in a modern, well-lit office environment. He is wearing a crisp light blue shirt with a tailored navy blazer, projecting authority, competence, and reliability. The background should be slightly blurred, showing architectural models or blueprint racks in high-key lighting to maintain the corporate modern aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBU7HnKKt37vgpz_x63KgpW-eEgkcwThoR77kUZQFujt3rHURIFTtkZmR8_HwGT2UYBrWIbOf8YdjJkpKG3oaKY5x9rS_ifHiqARpTjmKjLW5jxeGS_hvlQPD7OBxGCWKFjX3dTEY6Cf0Wg37U9QjA2Yf5D8IN8t6ce11FKuGuuJ0ZsQZucR_QAsbS16C_Joi3VkY1Xx0IMMevOye_40oGeGeMurhopw-i8ub9Pqtx3qqy5pjLRCuOq')"></div>
+<!-- Mini seal -->
+<div class="absolute bottom-4 right-4 bg-surface text-on-surface font-label-mono text-[10px] p-2 rounded border border-surface-dim flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]">engineering</span> CREA Ativo
+                        </div>
+</div>
+</div>
+<div class="w-full md:w-3/5 text-center md:text-left">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-sm block">Engenheiro Chefe</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background mb-xs">
+                        Wander Gualberto Fontenele
+                    </h2>
+<h3 class="font-title-md text-title-md text-primary mb-lg">
+                        Especialista em Engenharia Legal e Regularização Fundiária
+                    </h3>
+<p class="font-body-base text-body-base text-on-surface-variant mb-md">
+                        Com mais de uma década de atuação no Distrito Federal e Goiás, dedicados à resolução de passivos imobiliários de alta complexidade. Lidera a equipe da Meia-Um Engenharia na elaboração de laudos periciais, projetos de regularização (as-built), unificação de lotes e suporte técnico para inventários judiciais e extrajudiciais.
+                    </p>
+<p class="font-body-base text-body-base text-on-surface-variant mb-lg">
+                        Seu foco é entregar soluções que garantam a regularidade documental e estrutural com segurança jurídica, gerando liquidez e valorização ao patrimônio de seus clientes.
+                    </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-sm">
+<div class="flex items-center gap-xs bg-surface-container-low border border-surface-dim px-md py-sm rounded-lg">
+<span class="material-symbols-outlined text-primary text-[20px]">architecture</span>
+<span class="font-label-mono text-label-mono text-[11px]">Projetos As-Built</span>
+</div>
+<div class="flex items-center gap-xs bg-surface-container-low border border-surface-dim px-md py-sm rounded-lg">
+<span class="material-symbols-outlined text-primary text-[20px]">domain_verification</span>
+<span class="font-label-mono text-label-mono text-[11px]">Regularização Fundiária</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer from JSON (Contact & CTA integrated here for flow) -->
+<footer class="bg-inverse-surface dark:bg-on-tertiary-fixed text-secondary dark:text-secondary-fixed font-body-base text-body-base w-full border-t border-on-tertiary-fixed-variant" id="contato">
+<!-- Pre-footer CTA Area -->
+<div class="border-b border-[#333333] py-2xl px-margin-mobile md:px-margin-desktop text-center">
+<div class="max-w-3xl mx-auto">
+<h2 class="font-headline-md text-headline-md text-on-secondary mb-md">
+                        Não deixe seu patrimônio em risco por mais um dia
+                    </h2>
+<p class="text-inverse-on-surface mb-lg">
+                        Fale agora com um especialista da Meia-Um Engenharia, descubra a situação técnica do seu imóvel e veja como resolver — de forma rápida e com rigor estrutural.
+                    </p>
+<a class="inline-flex items-center justify-center gap-sm bg-[#3CA62A] text-on-secondary font-title-md text-title-md py-md px-2xl hover:-translate-y-[2px] transition-transform duration-200 technical-shadow w-full md:w-auto rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+                        Quero minha consulta gratuita agora
+                    </a>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-col md:flex-row justify-between items-center py-xl px-margin-desktop max-w-7xl mx-auto">
+<div class="mb-md md:mb-0 flex flex-col items-center md:items-start gap-xs">
+<div class="flex items-center gap-xs mb-sm">
+<span class="material-symbols-outlined text-primary font-title-md text-title-md font-bold text-inverse-on-surface" data-icon="architecture">architecture</span>
+<span class="font-title-md text-title-md font-bold text-inverse-on-surface">Meia-Um</span>
+</div>
+<p class="text-inverse-on-surface opacity-70 text-sm">© 2024 Meia-Um Engineering &amp; Consultancy. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap justify-center md:justify-end gap-md">
+<a class="text-inverse-on-surface hover:text-secondary-fixed transition-colors hover:underline text-sm" href="#">Services</a>
+<a class="text-inverse-on-surface hover:text-secondary-fixed transition-colors hover:underline text-sm" href="#">Portfolio</a>
+<a class="text-inverse-on-surface hover:text-secondary-fixed transition-colors hover:underline text-sm" href="#">Compliance</a>
+<a class="text-inverse-on-surface hover:text-secondary-fixed transition-colors hover:underline text-sm" href="#">Privacy Policy</a>
+<a class="text-inverse-on-surface hover:text-secondary-fixed transition-colors hover:underline text-sm" href="#">Terms of Service</a>
+</nav>
+</div>
+</footer>
+</main>
+<!-- Optional Interaction Script -->
+<script>
+        // Simple scroll offset for sticky header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
