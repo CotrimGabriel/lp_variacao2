@@ -237,6 +237,17 @@
   text-align: left;
 }
 
+/* Libera a largura do título para que ele fique em uma linha só quando couber,
+   mantendo o parágrafo num comprimento de leitura confortável. */
+.section__header--wide {
+  max-width: none;
+}
+
+.section__header--wide .lead {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
 /* Fundos "planta baixa" — herdados do design original. */
 .blueprint-bg {
   background-color: var(--color-surface);
