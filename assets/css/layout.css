@@ -30,16 +30,17 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
-  font-family: var(--font-headline);
-  font-size: var(--text-headline-md);
-  font-weight: 800;
-  letter-spacing: -0.015em;
-  color: var(--color-primary);
+  flex: none;
+  transition: opacity var(--transition);
 }
 
 .brand:hover {
-  color: var(--color-primary-container);
+  opacity: 0.75;
+}
+
+.brand__logo {
+  width: auto;
+  height: clamp(32px, 8vw, 42px);
 }
 
 /* Compensa a altura do cabeçalho fixo. */
@@ -110,7 +111,7 @@
   color: var(--color-primary);
 }
 
-.site-nav__link[aria-current="page"] {
+.site-nav__link[aria-current] {
   color: var(--color-primary);
   font-weight: 700;
 }
@@ -144,7 +145,7 @@
     border-bottom: 2px solid transparent;
   }
 
-  .site-nav__link[aria-current="page"] {
+  .site-nav__link[aria-current] {
     border-bottom-color: var(--color-primary);
   }
 }
@@ -229,6 +230,13 @@
   margin-bottom: var(--space-md);
 }
 
+/* Variante alinhada à esquerda, para seções que não centralizam a abertura. */
+.section__header--start {
+  max-width: 42rem;
+  margin-inline: 0;
+  text-align: left;
+}
+
 /* Fundos "planta baixa" — herdados do design original. */
 .blueprint-bg {
   background-color: var(--color-surface);
@@ -287,10 +295,6 @@
     gap: var(--space-2xl);
   }
 
-  .split--reverse {
-    flex-direction: row-reverse;
-  }
-
   .split__col--half {
     width: 50%;
   }
@@ -307,85 +311,102 @@
 /* --- Rodapé ------------------------------------------------------------------ */
 
 .site-footer {
-  background-color: var(--color-inverse-surface);
+  background-color: var(--color-darker);
   color: var(--color-inverse-on-surface);
   border-top: 1px solid var(--color-dark-border);
 }
 
-.site-footer__cta {
+/* Corpo do rodapé: bloco institucional + duas colunas de links. */
+.site-footer__main {
+  display: grid;
+  gap: var(--space-xl);
   padding-block: var(--space-xl);
-  border-bottom: 1px solid var(--color-dark-border);
-  text-align: center;
 }
 
-@media (min-width: 768px) {
-  .site-footer__cta {
-    padding-block: var(--space-2xl);
+@media (min-width: 640px) {
+  .site-footer__main {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .site-footer__about {
+    grid-column: 1 / -1;
   }
 }
 
-.site-footer__cta h2 {
+@media (min-width: 900px) {
+  .site-footer__main {
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-2xl);
+    padding-block: var(--space-2xl);
+  }
+
+  .site-footer__about {
+    grid-column: auto;
+  }
+}
+
+.site-footer__name {
   margin-bottom: var(--space-md);
-  font-size: var(--text-headline-md);
+  font-family: var(--font-headline);
+  font-size: var(--text-title);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--color-on-dark);
 }
 
-.site-footer__cta p {
+.site-footer__text {
+  max-width: 34rem;
   margin-bottom: var(--space-lg);
-}
-
-.site-footer__bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-lg);
-  padding-block: var(--space-xl);
-  text-align: center;
-}
-
-.site-footer__brand {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-sm);
-  font-family: var(--font-headline);
-  font-size: var(--text-title);
-  font-weight: 700;
   color: var(--color-inverse-on-surface);
+  opacity: 0.85;
+}
+
+.site-footer__contact {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.site-footer__contact a {
+  color: var(--color-inverse-on-surface);
+}
+
+.site-footer__contact a:hover {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+}
+
+.site-footer__col-title {
+  margin-bottom: var(--space-md);
+  font-size: var(--text-title);
+  color: var(--color-on-dark);
+}
+
+.site-footer__list {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.site-footer__list a {
+  color: var(--color-inverse-on-surface);
+  opacity: 0.85;
+}
+
+.site-footer__list a:hover {
+  color: var(--color-accent-light);
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Assinatura final, separada por um filete discreto. */
+.site-footer__bottom {
+  padding-block: var(--space-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
 }
 
 .site-footer__copyright {
   margin: 0;
   font-size: var(--text-small);
   opacity: 0.7;
-}
-
-.site-footer__links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-md);
-}
-
-.site-footer__links a {
-  color: var(--color-inverse-on-surface);
-  font-size: var(--text-small);
-}
-
-.site-footer__links a:hover {
-  color: var(--color-accent-light);
-  text-decoration: underline;
-}
-
-@media (min-width: 768px) {
-  .site-footer__bottom {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    text-align: left;
-  }
-
-  .site-footer__links {
-    justify-content: flex-end;
-  }
 }

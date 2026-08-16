@@ -11,7 +11,7 @@
 
   var MeiaUm = (window.MeiaUm = window.MeiaUm || {});
 
-  var modules = ['initNav', 'initContactForm'];
+  var modules = ['initNav', 'initScrollSpy', 'initContactForm'];
 
   modules.forEach(function (name) {
     if (typeof MeiaUm[name] !== 'function') {

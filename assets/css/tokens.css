@@ -8,6 +8,7 @@
   /* --- Superfícies claras ------------------------------------------------ */
   --color-background: #f9f9f9;
   --color-surface: #f9f9f9;
+  --color-surface-lowest: #ffffff;
   --color-surface-low: #f3f3f3;
   --color-surface-container: #eeeeee;
   --color-surface-highest: #e2e2e2;
@@ -37,7 +38,6 @@
   --color-on-dark: #ffffff;
   --color-on-dark-muted: #a0a0a0;
 
-  --color-inverse-surface: #2f3131;
   --color-inverse-on-surface: #f1f1f1;
 
   /* --- Feedback ----------------------------------------------------------- */
@@ -66,8 +66,8 @@
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
   /* Escalas fluidas: mesmos extremos mobile/desktop do layout original. */
+  --text-display: clamp(2.375rem, 5vw + 1rem, 4.5rem);    /* 38px  -> 72px */
   --text-headline-lg: clamp(2rem, 4vw + 1rem, 3.625rem);  /* 32px  -> 58px */
-  --text-headline-md: 1.5rem;                             /* 24px */
   --text-title: 1.1875rem;                                /* 19px */
   --text-lead: clamp(1.0625rem, 0.5vw + 1rem, 1.25rem);   /* 17px  -> 20px */
   --text-body: 1rem;                                      /* 16px */

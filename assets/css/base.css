@@ -149,10 +149,6 @@ strong {
   max-width: 900px;
 }
 
-.container--tight {
-  max-width: 720px;
-}
-
 /* Conteúdo apenas para leitores de tela. */
 .visually-hidden {
   position: absolute;

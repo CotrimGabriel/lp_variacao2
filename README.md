@@ -1,18 +1,16 @@
-# Meia-Um Engenharia — site institucional
+# Meia-Um Engenharia — landing page
 
-Site estático em **HTML, CSS e JavaScript puros**, sem build e sem dependências
-de runtime. Reescrita da landing page única original (que usava Tailwind via CDN
-com a configuração inline no HTML), agora dividida por páginas.
+Landing page de página única em **HTML, CSS e JavaScript puros**, sem build e
+sem dependências de runtime. Reescrita da versão original, que usava Tailwind
+via CDN com a configuração inline dentro do HTML.
 
 ## Estrutura
 
 ```
 .
-├── index.html              # Home: hero, alerta, diferenciais, por que importa
-├── servicos.html           # Situações que atendemos (casos de risco)
-├── processo.html           # As 4 etapas do atendimento (linha do tempo)
-├── especialista.html       # Engenheiro chefe e equipe
-├── contato.html            # Formulário de consulta gratuita e contatos diretos
+├── index.html              # A landing inteira: 8 seções + rodapé
+├── img/
+│   └── logo-meia-um.png    # Logo da marca (cabeçalho, rodapé e favicon)
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css      # Variáveis CSS: cores, espaçamentos, tipografia
@@ -21,18 +19,33 @@ com a configuração inline no HTML), agora dividida por páginas.
 │   │   └── components.css  # Botões, cartões, hero, timeline, formulário
 │   └── js/
 │       ├── nav.js          # Menu mobile + estado do cabeçalho na rolagem
+│       ├── scrollspy.js    # Destaque da seção ativa no menu
 │       ├── form.js         # Validação e envio do formulário de contato
-│       └── main.js         # Ponto de entrada: inicializa o que existe na página
+│       └── main.js         # Ponto de entrada: inicializa os módulos
 └── legacy/
-    └── index-tailwind-original.html   # Landing page original, para consulta
+    └── index-tailwind-original.html   # Versão original, para consulta
 ```
+
+### Seções da página
+
+| Âncora | Seção |
+|---|---|
+| `#inicio` | Hero com CTA e selo de garantia técnica |
+| — | Faixa de alerta sobre imóvel irregular |
+| `#diferenciais` | Por que a Meia-Um é a melhor escolha (4 cartões) |
+| `#importancia` | Por que isso importa (texto + imagem) |
+| `#situacoes` | Você está em algum destes casos? (3 cartões) |
+| `#processo` | Como funciona o atendimento (linha do tempo de 4 etapas) |
+| `#resultados` | Depoimentos de clientes (3 cartões com avaliação) |
+| `#especialista` | Engenheiro chefe |
+| `#contato` | Formulário de consulta gratuita + contatos diretos |
 
 ## Como executar
 
-Basta abrir `index.html` no navegador. Os scripts são clássicos (`defer`), então
-funcionam também via `file://`.
+Basta abrir `index.html` no navegador — os scripts são clássicos (`defer`),
+então funcionam também via `file://`.
 
-Para servir por HTTP (recomendado para testar cache, fontes e o formulário):
+Para servir por HTTP:
 
 ```bash
 npx serve .
@@ -43,11 +56,11 @@ python -m http.server 8000
 ## Decisões técnicas
 
 - **Sem framework CSS.** O tema do Tailwind (cores, espaçamentos, escalas
-  tipográficas) foi convertido em *design tokens* em `tokens.css`. Alterar uma
-  cor da marca é mudar uma linha.
+  tipográficas) virou *design tokens* em `tokens.css`. Trocar uma cor da marca
+  é mudar uma linha.
 - **Nomenclatura BEM** (`bloco__elemento--modificador`) nos componentes, com um
   punhado mínimo de utilitários (`.mt-md`, `.text-center`).
-- **Mobile-first**, com breakpoints em 640px e 900px e tipografia fluida
+- **Mobile-first**, breakpoints em 640px e 900px e tipografia fluida
   (`clamp()`), preservando os tamanhos mobile/desktop do layout original.
 - **Rolagem suave em CSS** (`scroll-behavior` + `scroll-padding-top`), no lugar
   do script de offset manual da versão anterior.
@@ -55,7 +68,7 @@ python -m http.server 8000
   (`site-header--no-js`) e vira menu sanfonado apenas quando o JS assume; o
   formulário valida nativamente se o JS falhar.
 - **Acessibilidade:** landmarks semânticos, link "pular para o conteúdo",
-  `aria-current` na página ativa, `aria-expanded`/`aria-controls` no menu,
+  `aria-current` na seção ativa, `aria-expanded`/`aria-controls` no menu,
   `aria-invalid` + `aria-describedby` nos campos, foco visível e suporte a
   `prefers-reduced-motion`.
 - **JavaScript modular sem bundler:** cada arquivo registra sua função de
@@ -66,9 +79,9 @@ python -m http.server 8000
 
 1. `assets/js/form.js` → função `sendLead()`: hoje o envio é simulado (log no
    console). Aponte para o seu endpoint/CRM.
-2. `contato.html`: telefone, WhatsApp e e-mail são placeholders.
-3. Imagens: ainda apontam para as URLs remotas do protótipo. Baixe-as para
-   `assets/img/` e sirva localmente (com `width`/`height` reais) para melhor
-   desempenho.
+2. Telefone, WhatsApp e e-mail na seção de contato são placeholders.
+3. Imagens de conteúdo (foto do especialista, mesa de trabalho e fundo do hero)
+   ainda apontam para as URLs remotas do protótipo. Baixe-as para `img/` e
+   sirva localmente. O logo já é local.
 4. Fontes: carregadas pelo Google Fonts. Para autonomia total, hospede
    Montserrat, Inter, JetBrains Mono e Material Symbols localmente.

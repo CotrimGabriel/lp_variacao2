@@ -100,6 +100,14 @@
   font-size: var(--text-small);
 }
 
+/* Ícone SVG dentro de um botão: acompanha a cor e o tamanho do texto. */
+.btn__icon {
+  flex: none;
+  width: 1.125em;
+  height: 1.125em;
+  fill: currentColor;
+}
+
 /* Respiro lateral generoso no desktop, sem estourar a tela no mobile. */
 .btn--wide {
   padding-inline: clamp(var(--space-lg), 6vw, var(--space-2xl));
@@ -145,9 +153,24 @@
   text-align: center;
 }
 
+/* Título de maior peso da página: escala display, mais fechado que os demais. */
 .hero__title {
   max-width: 56rem;
   margin-bottom: var(--space-md);
+  font-size: var(--text-display);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+/* Quebras de linha compostas à mão, só onde há largura para elas. */
+.br-desktop {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .br-desktop {
+    display: inline;
+  }
 }
 
 .hero__subtitle {
@@ -205,45 +228,6 @@
   .seal {
     display: flex;
   }
-}
-
-/* --- Cabeçalho de página interna --------------------------------------------- */
-
-.page-hero {
-  padding-block: var(--space-xl);
-  border-bottom: 1px solid var(--color-surface-dim);
-  text-align: center;
-}
-
-.page-hero__title {
-  margin-bottom: var(--space-md);
-}
-
-.page-hero .lead {
-  max-width: 44rem;
-  margin-inline: auto;
-}
-
-/* --- Faixa de alerta ---------------------------------------------------------- */
-
-.alert-banner {
-  padding-block: var(--space-md);
-  background-color: var(--color-error-container);
-  color: var(--color-on-error-container);
-  border-block: 1px solid rgba(147, 0, 10, 0.2);
-}
-
-.alert-banner__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  text-align: center;
-}
-
-.alert-banner p {
-  margin: 0;
-  font-weight: 500;
 }
 
 /* --- Cartões ------------------------------------------------------------------ */
@@ -315,6 +299,69 @@
   border-radius: var(--radius-full);
   background-color: var(--color-surface-highest);
   color: var(--color-on-surface-muted);
+}
+
+/* --- Depoimentos --------------------------------------------------------------- */
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: 0;
+  padding: var(--space-lg);
+  background-color: var(--color-surface-lowest);
+  border: 1px solid var(--color-surface-dim);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Cinco estrelas desenhadas a partir de um único símbolo SVG do documento. */
+.rating {
+  display: flex;
+  gap: 2px;
+  margin: 0;
+  color: var(--color-primary-container);
+}
+
+.rating__star {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.testimonial__quote {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  font-style: italic;
+}
+
+.testimonial__quote p::before {
+  content: "\201C";
+}
+
+.testimonial__quote p::after {
+  content: "\201D";
+}
+
+.testimonial__author {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.testimonial__name {
+  font-family: var(--font-headline);
+  font-size: var(--text-title);
+  font-weight: 700;
+  line-height: var(--leading-snug);
+}
+
+.testimonial__place {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary-container);
 }
 
 /* --- Lista de benefícios ------------------------------------------------------ */
@@ -395,6 +442,22 @@
 
 .media__badge .icon {
   color: var(--color-primary);
+}
+
+/* --- Mapa incorporado ---------------------------------------------------------- */
+
+.map {
+  overflow: hidden;
+  border: 1px solid var(--color-surface-dim);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.map__frame {
+  display: block;
+  width: 100%;
+  height: clamp(20rem, 45vh, 30rem);
+  border: 0;
 }
 
 /* --- Chips / etiquetas -------------------------------------------------------- */
@@ -692,4 +755,15 @@ textarea.field__control {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-on-surface-variant);
+}
+
+/* Ocupa a largura restante do cartão, para que a ação encoste na borda. */
+.contact-list__body {
+  flex: 1;
+  min-width: 0;
+}
+
+/* O próprio número é o rótulo do botão: uma linha só, em qualquer largura. */
+.contact-list__cta {
+  margin-top: var(--space-xs);
 }
