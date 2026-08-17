@@ -93,7 +93,7 @@
 
         <p class="hero__note">
           <span class="material-symbols-outlined icon icon--xs text-accent" aria-hidden="true">check_circle</span>
-          Visita para avaliação inicial gratuita
+          Visita para avaliação gratuita
         </p>
 
         <div class="seal" aria-hidden="true">
@@ -197,13 +197,16 @@
 
         <div class="split__col split__col--half">
           <figure class="media media--wide">
-            <img
-              src="img/escritorio_meiaUM.jpg"
-              alt="Mesa de trabalho de engenharia com plantas arquitetônicas enroladas e um tablet exibindo o modelo 3D de uma casa."
-              loading="lazy"
-              decoding="async"
-              width="800"
-              height="600">
+            <picture>
+              <source srcset="img/escritorio_meiaUM.webp" type="image/webp">
+              <img
+                src="img/escritorio_meiaUM.jpg"
+                alt="Mesa de trabalho de engenharia com plantas arquitetônicas enroladas e um tablet exibindo o modelo 3D de uma casa."
+                loading="lazy"
+                decoding="async"
+                width="800"
+                height="600">
+            </picture>
           </figure>
         </div>
       </div>
@@ -556,25 +559,11 @@
                 <span class="field__error" id="erro-mensagem" data-field-error></span>
               </div>
 
-              <div class="field field--check">
-                <input id="consentimento" name="consentimento" type="checkbox" value="sim"
-                       required aria-describedby="erro-consentimento">
-                <label class="field__label" for="consentimento">
-                  Autorizo a Meia-Um Engenharia a entrar em contato comigo sobre esta solicitação.
-                </label>
-                <span class="field__error" id="erro-consentimento" data-field-error></span>
-              </div>
-
               <button class="btn btn--accent btn--block" type="submit">
                 Enviar e agendar avaliação
               </button>
 
               <p class="form__status" role="status" aria-live="polite" data-form-status></p>
-
-              <p class="form__hint">
-                Os campos marcados com <span class="field__required">*</span> são obrigatórios.
-                Retornamos em até 1 dia útil.
-              </p>
             </form>
           </div>
 

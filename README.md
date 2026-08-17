@@ -10,7 +10,9 @@ via CDN com a configuração inline dentro do HTML.
 .
 ├── index.html              # A landing inteira: 8 seções + rodapé
 ├── img/
-│   └── logo-meia-um.png    # Logo da marca (cabeçalho, rodapé e favicon)
+│   ├── logo-meia-um.png            # Logo da marca (cabeçalho, rodapé e favicon)
+│   ├── escritorio_meiaUM.webp      # Foto da seção "Regularização" (servida por padrão)
+│   └── escritorio_meiaUM.jpg       # Mesma foto em JPEG (fallback do <picture>)
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css      # Variáveis CSS: cores, espaçamentos, tipografia

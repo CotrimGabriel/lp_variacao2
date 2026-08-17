@@ -187,7 +187,7 @@
   font-size: var(--text-label);
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--color-on-surface-muted);
+  color: var(--color-on-surface);
 }
 
 /* Selo técnico rotacionado (apenas em telas grandes, como no original). */
@@ -409,7 +409,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+.media picture {
+  display: block;
+}
+
 .media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -668,25 +673,7 @@ textarea.field__control {
   resize: vertical;
 }
 
-/* Campo de consentimento (checkbox + rótulo em linha). */
-.field--check {
-  grid-template-columns: auto 1fr;
-  align-items: start;
-  column-gap: var(--space-sm);
-}
-
-.field--check input {
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-top: 0.2rem;
-  accent-color: var(--color-primary);
-}
-
-.field--check .field__label {
-  font-size: var(--text-small);
-}
-
-.field--check .field__error {
+.field__error {
   grid-column: 1 / -1;
 }
 
