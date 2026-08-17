@@ -199,6 +199,11 @@
   border-block: 1px solid var(--color-surface-dim);
 }
 
+/* O hero já traz a própria borda inferior: evita traço duplo logo abaixo dele. */
+.hero + .section--alt {
+  border-block-start: 0;
+}
+
 .section--bordered {
   border-bottom: 1px solid var(--color-surface-dim);
 }
