@@ -91,6 +91,12 @@
   /* --- Movimento ----------------------------------------------------------- */
   --transition: 200ms ease;
   --transition-slow: 300ms ease;
+
+  /* Revelação dos blocos conforme a página é rolada. */
+  --reveal-duration: 600ms;
+  --reveal-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --reveal-shift: 18px;
+  --reveal-stagger: 80ms;
 }
 
 @media (min-width: 768px) {

@@ -1,14 +1,17 @@
 # Meia-Um Engenharia — landing page
 
-Landing page de página única em **HTML, CSS e JavaScript puros**, sem build e
-sem dependências de runtime. Reescrita da versão original, que usava Tailwind
-via CDN com a configuração inline dentro do HTML.
+Landing page de página única em **HTML, CSS e JavaScript puros**, sem build no
+front-end. Reescrita da versão original, que usava Tailwind via CDN com a
+configuração inline dentro do HTML. O único back-end é uma função serverless
+para o formulário de contato (ver "Back-end do formulário" abaixo).
 
 ## Estrutura
 
 ```
 .
 ├── index.html              # A landing inteira: 8 seções + rodapé
+├── api/
+│   └── leads.js             # Function serverless: recebe o formulário e grava na Google Sheet
 ├── img/
 │   ├── logo-meia-um.png            # Logo da marca (cabeçalho, rodapé e favicon)
 │   ├── escritorio_meiaUM.webp      # Foto da seção "Regularização" (servida por padrão)
@@ -23,7 +26,10 @@ via CDN com a configuração inline dentro do HTML.
 │       ├── nav.js          # Menu mobile + estado do cabeçalho na rolagem
 │       ├── scrollspy.js    # Destaque da seção ativa no menu
 │       ├── form.js         # Validação e envio do formulário de contato
+│       ├── reveal.js       # Blocos surgindo conforme a página é rolada
 │       └── main.js         # Ponto de entrada: inicializa os módulos
+├── package.json            # Dependências da function (google-spreadsheet, google-auth-library)
+├── .env.example             # Variáveis de ambiente exigidas por api/leads.js
 └── legacy/
     └── index-tailwind-original.html   # Versão original, para consulta
 ```
@@ -77,13 +83,35 @@ python -m http.server 8000
   inicialização em `window.MeiaUm` e `main.js` executa apenas o que existe na
   página.
 
+## Back-end do formulário (Google Sheets)
+
+O envio do formulário (`assets/js/form.js` → `sendLead()`) chama a função
+serverless `api/leads.js`, que valida os dados no servidor e adiciona uma linha
+numa Google Sheet via Service Account. Requer hospedagem no Vercel (a função é
+mapeada automaticamente de `api/leads.js` para `POST /api/leads`) e três
+variáveis de ambiente, documentadas em `.env.example`:
+
+- `GOOGLE_SERVICE_ACCOUNT_EMAIL`
+- `GOOGLE_PRIVATE_KEY`
+- `GOOGLE_SHEET_ID`
+
+Para desenvolver localmente: `npm install`, copie `.env.example` para
+`.env.local` com os valores reais e rode `npm run dev` (usa `vercel dev`, exige
+`vercel login`/`vercel link` uma vez). Em produção, configure as mesmas
+variáveis em Project Settings → Environment Variables no Vercel.
+
+O formulário também tem um campo honeypot (`#site`, oculto e fora da tabulação)
+para filtrar submissões de bots antes de chegarem à planilha.
+
 ## Pontos a completar antes de publicar
 
-1. `assets/js/form.js` → função `sendLead()`: hoje o envio é simulado (log no
-   console). Aponte para o seu endpoint/CRM.
-2. Telefone, WhatsApp e e-mail na seção de contato são placeholders.
-3. Imagens de conteúdo (foto do especialista, mesa de trabalho e fundo do hero)
+1. Telefone, WhatsApp e e-mail na seção de contato são placeholders.
+2. Imagens de conteúdo (foto do especialista, mesa de trabalho e fundo do hero)
    ainda apontam para as URLs remotas do protótipo. Baixe-as para `img/` e
    sirva localmente. O logo já é local.
-4. Fontes: carregadas pelo Google Fonts. Para autonomia total, hospede
-   Montserrat, Inter, JetBrains Mono e Material Symbols localmente.
+3. Fontes: Montserrat, Inter e JetBrains Mono vêm do Google Fonts em uma única
+   requisição. Para autonomia total, hospede-as localmente.
+4. Ícones: são `<symbol>` SVG embutidos no topo do `<body>` do `index.html`,
+   consumidos com `<svg class="icon"><use href="#icone-nome"></use></svg>`.
+   Para acrescentar um ícone, adicione um novo `<symbol>` ao sprite — não
+   reintroduza a fonte Material Symbols, que baixava 320 kB.

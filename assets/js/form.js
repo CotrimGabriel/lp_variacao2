@@ -6,8 +6,8 @@
  * português exibidos junto de cada campo. Sem JavaScript o formulário
  * continua validando de forma nativa.
  *
- * O envio é simulado: não há back-end neste projeto estático. Substitua o
- * corpo de `sendLead()` por uma chamada ao seu endpoint/CRM.
+ * O envio vai para a função serverless em api/leads.js, que grava o lead
+ * numa Google Sheet.
  */
 (function (window, document) {
   'use strict';
@@ -29,9 +29,11 @@
     }
 
     var status = form.querySelector('[data-form-status]');
-    var fields = Array.prototype.slice.call(
-      form.querySelectorAll('input, select, textarea')
-    );
+    var fields = Array.prototype.slice
+      .call(form.querySelectorAll('input, select, textarea'))
+      .filter(function (field) {
+        return !field.hasAttribute('data-honeypot');
+      });
 
     // Validação nativa desativada para controlarmos as mensagens.
     form.setAttribute('novalidate', '');
@@ -133,21 +135,16 @@
       });
   }
 
-  /**
-   * Ponto de integração. Troque por, por exemplo:
-   *
-   *   return fetch('/api/leads', {
-   *     method: 'POST',
-   *     headers: { 'Content-Type': 'application/json' },
-   *     body: JSON.stringify(payload)
-   *   }).then(function (response) {
-   *     if (!response.ok) throw new Error(response.statusText);
-   *   });
-   */
+  /** Envia o lead para a função serverless que grava na Google Sheet. */
   function sendLead(payload) {
-    return new Promise(function (resolve) {
-      window.console.info('[Meia-Um] Lead capturado:', payload);
-      window.setTimeout(resolve, 600);
+    return window.fetch('/api/leads', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function (response) {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
     });
   }
 

@@ -139,7 +139,7 @@
   inset: 0;
   opacity: 0.1;
   pointer-events: none;
-  background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBb2ERYTJ3eOTmX_SdpuUbStEQvCeZCio4uFn96z2rifVP48GfyR-N6V0fjCZaPJ0p2_rVckkynfknySbMrVbypu3dBprUkTqKeLUipE-nyh0jObumoUZoIz3SyYxw_SK5SXyYq6qXXWvu3mWVJMlFFK_uzO3INNu2wxFmCM_F-9IQiqxrGSMWNZNYWXWcLVzoHJfFYbS5VPDlMmwh8RMSy_DMX80B-BRMR8yzHlQCkoZlioWAwdqMl");
+  background-image: url("../img/hero-backdrop.webp");
   background-size: cover;
   background-position: center;
 }
@@ -188,46 +188,6 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--color-on-surface);
-}
-
-/* Selo técnico rotacionado (apenas em telas grandes, como no original). */
-.seal {
-  display: none;
-  position: absolute;
-  top: var(--space-xl);
-  right: var(--space-xl);
-  width: 96px;
-  height: 96px;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-surface);
-  border: 2px solid var(--color-accent);
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-technical);
-  transform: rotate(-8deg);
-  text-align: center;
-  pointer-events: none;
-}
-
-.seal__label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-accent);
-}
-
-.seal .icon {
-  display: block;
-  margin-bottom: var(--space-xs);
-  color: var(--color-accent);
-}
-
-@media (min-width: 900px) {
-  .seal {
-    display: flex;
-  }
 }
 
 /* --- Cartões ------------------------------------------------------------------ */

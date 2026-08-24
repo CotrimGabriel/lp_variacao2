@@ -101,35 +101,38 @@ strong {
   border-radius: var(--radius);
 }
 
-/* --- Ícones (Material Symbols) --------------------------------------------- */
+/* --- Ícones (sprite SVG no topo do <body>) ---------------------------------- */
 
+/*
+ * Os ícones vinham da fonte Material Symbols, que baixava 320 kB para desenhar
+ * pouco mais de duas dezenas de símbolos. Agora são <use> apontando para os
+ * <symbol> embutidos no HTML: nenhuma requisição, nada para esperar.
+ *
+ * `fill: currentColor` mantém o comportamento antigo de herdar a cor do texto,
+ * que é o que faz utilitários como `.text-accent` continuarem valendo.
+ */
 .icon {
-  font-family: "Material Symbols Outlined";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 1.5rem;
-  line-height: 1;
-  letter-spacing: normal;
+  width: 1.5rem;
+  height: 1.5rem;
   display: inline-block;
   flex: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  direction: ltr;
-  font-feature-settings: "liga";
-  -webkit-font-smoothing: antialiased;
-  user-select: none;
+  fill: currentColor;
+  vertical-align: middle;
 }
 
 .icon--sm {
-  font-size: 1.125rem;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 .icon--xs {
-  font-size: 0.875rem;
+  width: 0.875rem;
+  height: 0.875rem;
 }
 
 .icon--lg {
-  font-size: 1.875rem;
+  width: 1.875rem;
+  height: 1.875rem;
 }
 
 /* --- Utilitários ------------------------------------------------------------ */
@@ -217,6 +220,28 @@ strong {
   color: var(--color-primary);
 }
 
+/* --- Revelação no scroll ------------------------------------------------------ */
+
+/*
+ * Os blocos entram suavemente conforme aparecem na tela.
+ *
+ * O estado inicial (invisível) fica atrás da classe `js-reveal`, que o próprio
+ * JS coloca em <html> antes da primeira pintura. Sem JS — ou se o navegador não
+ * tiver IntersectionObserver — a classe nunca é aplicada e todo o conteúdo
+ * permanece visível, sem depender de script para ser lido.
+ */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(var(--reveal-shift));
+  transition: opacity var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0ms),
+    transform var(--reveal-duration) var(--reveal-ease) var(--reveal-delay, 0ms);
+}
+
+.js-reveal [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
 /* Respeita a preferência de menos movimento do sistema. */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -229,5 +254,11 @@ strong {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Sem deslocamento: o bloco apenas aparece, sem percorrer a tela. */
+  .js-reveal [data-reveal] {
+    transform: none;
+    transition-delay: 0ms;
   }
 }

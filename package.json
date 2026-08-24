@@ -1,0 +1,11 @@
+{
+  "name": "meia-um-engenharia",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Landing page da Meia-Um Engenharia + função serverless do formulário de contato.",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "google-auth-library": "^9.14.1",
+    "google-spreadsheet": "^4.1.4"
+  }
+}
