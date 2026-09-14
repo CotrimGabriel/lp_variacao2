@@ -193,16 +193,29 @@
 /* --- Cartões ------------------------------------------------------------------ */
 
 .card {
+  display: block;
   padding: var(--space-lg);
   background-color: var(--color-surface);
   border: 1px solid var(--color-surface-dim);
   border-radius: var(--radius-xl);
+  color: inherit;
+  text-decoration: none;
   transition: border-color var(--transition-slow), box-shadow var(--transition-slow);
 }
 
 .card:hover {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
+}
+
+/* Rodapé de chamada nos cards que são links (ex.: seção "Situações"). */
+.card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  color: var(--color-primary);
+  font-weight: 600;
 }
 
 .card__title {
@@ -218,7 +231,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
   text-align: center;
+}
+
+/* Empurra o CTA para o rodapé, alinhando-o entre cards de alturas de texto diferentes. */
+.card--centered .card__cta {
+  margin-top: auto;
+  padding-top: var(--space-md);
 }
 
 .card--dark {
@@ -713,4 +733,82 @@ textarea.field__control {
 /* O próprio número é o rótulo do botão: uma linha só, em qualquer largura. */
 .contact-list__cta {
   margin-top: var(--space-xs);
+}
+
+/* --- Botão flutuante do WhatsApp ---------------------------------------------- */
+
+.whatsapp-float {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.whatsapp-float__bubble {
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  font-size: var(--text-small);
+  font-weight: 500;
+  color: var(--color-on-surface);
+  white-space: nowrap;
+  transition: box-shadow var(--transition);
+}
+
+.whatsapp-float:hover .whatsapp-float__bubble {
+  box-shadow: var(--shadow-technical);
+}
+
+.whatsapp-float__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  background-color: #27d045;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-md);
+  color: var(--color-on-accent);
+  transition: background-color var(--transition);
+}
+
+.whatsapp-float:hover .whatsapp-float__button {
+  background-color: #21b83b;
+}
+
+.whatsapp-float__button .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.whatsapp-float__badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-error);
+  border: 2px solid var(--color-background);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--color-on-accent);
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float__bubble {
+    display: none;
+  }
 }

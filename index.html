@@ -40,6 +40,7 @@
   <script src="assets/js/nav.js" defer></script>
   <script src="assets/js/scrollspy.js" defer></script>
   <script src="assets/js/form.js" defer></script>
+  <script src="assets/js/situations.js" defer></script>
   <script src="assets/js/reveal.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 </head>
@@ -164,11 +165,11 @@
 
       <div class="container hero__inner">
         <h1 class="hero__title" id="titulo-hero">
-          Seu imovel<br class="br-desktop"> regularizado ou <span class="text-primary">seu dinheiro de volta</span> <br class="br-desktop">
+          Seu imóvel<br class="br-desktop"> regularizado ou <span class="text-primary">seu dinheiro de volta</span> <br class="br-desktop">
         </h1>
 
         <p class="lead hero__subtitle">
-          Não deixe seu imovél irregular te atrapalhar. A Meia-Um resolve do início
+          Não deixe seu imóvel irregular te atrapalhar. A Meia-Um resolve do início
           ao fim, com acompanhamento técnico e garantia de aprovação.
         </p>
 
@@ -200,7 +201,7 @@
               <svg class="icon" aria-hidden="true"><use href="#icone-trending-up"></use></svg>
               <div>
                 <strong class="feature-list__title">Valorização imediata</strong>
-                <span class="feature-list__text">Imóvel regularizado pode valor até 30% a mais.</span>
+                <span class="feature-list__text">Imóvel regularizado pode valer até 30% a mais.</span>
               </div>
             </li>
             <li class="feature-list__item">
@@ -270,7 +271,7 @@
             </div>
             <h3 class="card__title">Resultados que comprovam</h3>
             <p class="card__text">
-              Mais de uma decada aprovando no DF. Nosso trabalho se mede
+              Mais de uma década aprovando no DF. Nosso trabalho se mede
               por imóveis regularizados.
             </p>
           </article>
@@ -301,7 +302,7 @@
         </div>
 
         <div class="grid grid--3">
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="inventario">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-sentiment-dissatisfied"></use></svg>
             </div>
@@ -309,9 +310,13 @@
             <p class="card__text">
               Pai, mãe ou cônjuge faleceu e o imóvel segue no nome do falecido. Os bens ficam travados.
             </p>
-          </article>
+            <span class="card__cta">
+               Resolver este caso 
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="sem-escritura">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-contract"></use></svg>
             </div>
@@ -319,9 +324,13 @@
             <p class="card__text">
               Compra por contrato de gaveta ou cessão de direitos. O imóvel não está no seu nome.
             </p>
-          </article>
+            <span class="card__cta">
+              Resolver este caso
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="habite-se">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-foundation"></use></svg>
             </div>
@@ -329,19 +338,27 @@
             <p class="card__text">
               Obra concluída, mas sem a carta de habite-se e sem averbação na matrícula do cartório.
             </p>
-          </article>
+            <span class="card__cta">
+              Resolver este caso
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="averbacao">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-handyman"></use></svg>
             </div>
             <h3 class="card__title">Reforma ou ampliação sem alvará</h3>
             <p class="card__text">
-              Puxadinho, reforma ou mudança de uso que nunca foram atualizados na planta do imóvel.
+              Puxadinho, reforma ou mudança de uso que não atualizados na planta do imóvel. Conforme o Decreto nº 46.003/2024.
             </p>
-          </article>
+            <span class="card__cta">
+              Resolver este caso
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="venda-travada">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-lock"></use></svg>
             </div>
@@ -349,9 +366,13 @@
             <p class="card__text">
               O comprador apareceu, mas a documentação não libera a negociação.
             </p>
-          </article>
+            <span class="card__cta">
+              Resolver este caso
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
-          <article class="card card--centered">
+          <a class="card card--centered" href="#contato" data-situacao="financiamento-negado">
             <div class="card__icon card__icon--round">
               <svg class="icon icon--lg" aria-hidden="true"><use href="#icone-account-balance"></use></svg>
             </div>
@@ -359,7 +380,11 @@
             <p class="card__text">
               Crédito recusado por pendência documental no imóvel dado em garantia.
             </p>
-          </article>
+            <span class="card__cta">
+              Resolver este caso
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </span>
+          </a>
 
         </div>
 
@@ -504,7 +529,7 @@
         <div class="split__col split__col--two-fifths">
           <figure class="media media--tall">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU7HnKKt37vgpz_x63KgpW-eEgkcwThoR77kUZQFujt3rHURIFTtkZmR8_HwGT2UYBrWIbOf8YdjJkpKG3oaKY5x9rS_ifHiqARpTjmKjLW5jxeGS_hvlQPD7OBxGCWKFjX3dTEY6Cf0Wg37U9QjA2Yf5D8IN8t6ce11FKuGuuJ0ZsQZucR_QAsbS16C_Joi3VkY1Xx0IMMevOye_40oGeGeMurhopw-i8ub9Pqtx3qqy5pjLRCuOq"
+              src="img/victor.jpg"
               alt="Retrato profissional de Wander Gualberto Fontenele, engenheiro chefe da Meia-Um, em um escritório."
               loading="lazy"
               decoding="async"
@@ -525,7 +550,7 @@
           </p>
 
           <p class="muted">
-            Com mais de uma 15 anos de atuação no Distrito Federal e Goiás, dedicados à resolução
+            Com mais de 10 anos de atuação no Distrito Federal e Goiás, dedicados à resolução
             de passivos imobiliários de alta complexidade. Lidera a equipe da Meia-Um Engenharia
             na elaboração de laudos periciais, projetos de regularização (as-built), unificação
             de lotes e suporte técnico para inventários judiciais e extrajudiciais.
@@ -625,6 +650,8 @@
                   <option value="inventario">Falecimento sem inventário</option>
                   <option value="sem-escritura">Imóvel comprado sem escritura</option>
                   <option value="averbacao">Ampliação sem averbação na matrícula</option>
+                  <option value="venda-travada">Venda travada na negociação</option>
+                  <option value="financiamento-negado">Financiamento negado pelo banco</option>
                   <option value="outro">Outra situação</option>
                 </select>
                 <span class="field__error" id="erro-situacao" data-field-error></span>
@@ -657,10 +684,10 @@
                 <div class="contact-list__body">
                   <span class="contact-list__label">WhatsApp</span>
                   <a class="btn btn--accent btn--sm contact-list__cta"
-                     href="https://wa.me/5561000000000" target="_blank" rel="noopener"
-                     aria-label="Falar no WhatsApp pelo número (61) 0000-0000">
+                     href="https://wa.me/556190449451" target="_blank" rel="noopener"
+                     aria-label="Falar no WhatsApp pelo número (61) 9044-9451">
                     <svg class="btn__icon" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
-                    (61) 0000-0000
+                    (61) 9044-9451
                   </a>
                 </div>
               </li>
@@ -690,8 +717,7 @@
             <div class="card mt-lg">
               <h3 class="card__title">O que acontece depois do envio</h3>
               <p class="card__text">
-                Um especialista analisa a sua descrição, confirma os documentos necessários e
-                agenda a visita de avaliação inicial — sem custo e sem compromisso.
+                Um especialista analisa a sua descrição, confirma os documentos necessários — sem custo e sem compromisso.
               </p>
             </div>
           </div>
@@ -733,7 +759,7 @@
           residenciais no Distrito Federal.
         </p>
         <ul class="site-footer__contact">
-          <li>WhatsApp: <a href="https://wa.me/5561999999999">(61) 99999-9999</a></li>
+          <li>WhatsApp: <a href="https://wa.me/556190449451">(61) 9044-9451</a></li>
           <li>E-mail: <a href="mailto:contato@meiaum.com.br">contato@meiaum.com.br</a></li>
           <li>Brasília/DF</li>
         </ul>
@@ -772,5 +798,15 @@
       </p>
     </div>
   </footer>
+
+  <!-- ===================== Botão flutuante do WhatsApp ===================== -->
+  <a class="whatsapp-float" href="https://wa.me/556190449451" target="_blank" rel="noopener"
+     aria-label="Dúvidas? Entre em contato pelo WhatsApp, número (61) 9044-9451">
+    <span class="whatsapp-float__bubble">Dúvidas? Entre em contato!</span>
+    <span class="whatsapp-float__button">
+      <svg class="icon" aria-hidden="true"><use href="#icone-whatsapp"></use></svg>
+      <span class="whatsapp-float__badge" aria-hidden="true">1</span>
+    </span>
+  </a>
 </body>
 </html>
