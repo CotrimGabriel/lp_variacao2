@@ -79,20 +79,24 @@
 }
 
 .btn--outline {
-  background-color: var(--color-surface);
+  background-color: transparent;
   border-color: var(--color-surface-dim);
   color: var(--color-primary);
-  font-family: var(--font-mono);
-  font-size: var(--text-label);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border-radius: var(--radius-lg);
-  padding: var(--space-sm) var(--space-md);
 }
 
 .btn--outline:hover {
   background-color: var(--color-surface-container);
   color: var(--color-primary);
+}
+
+.hero--dark .btn--outline {
+  border-color: var(--color-dark-border);
+  color: var(--color-on-dark);
+}
+
+.hero--dark .btn--outline:hover {
+  background-color: var(--color-dark-card);
+  color: var(--color-on-dark);
 }
 
 .btn--sm {
@@ -134,12 +138,26 @@
   border-bottom: 1px solid var(--color-surface-dim);
 }
 
-.hero__backdrop {
-  position: absolute;
-  inset: 0;
-  opacity: 0.1;
-  pointer-events: none;
-  background-image: url("../img/hero-backdrop.webp");
+.hero--dark {
+  background-color: var(--color-dark);
+  color: var(--color-on-dark);
+  border-bottom-color: var(--color-dark-border);
+}
+
+.hero--dark .hero__subtitle,
+.hero--dark .hero__note {
+  color: var(--color-on-dark-muted);
+}
+
+.hero--dark .text-primary {
+  color: var(--color-primary-light);
+}
+
+/* Mesa de projeto (capacete, planta e instrumentos) como fundo do Hero — com
+   máscara preta por cima para o texto continuar legível. */
+.hero--photo {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+    url("../../img/mesa-projeto-hero.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -147,15 +165,26 @@
 .hero__inner {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+}
+
+.hero__content {
+  text-align: left;
+}
+
+/* Selo de localização, no mesmo espírito do `.chip`, mas contornado para se destacar no fundo escuro. */
+.hero__badge {
+  margin-bottom: var(--space-md);
+  background-color: transparent;
+  border-color: var(--color-dark-border);
+  color: var(--color-on-dark-muted);
+}
+
+.chip.hero__badge .icon {
+  color: var(--color-accent-light);
 }
 
 /* Título de maior peso da página: escala display, mais fechado que os demais. */
 .hero__title {
-  max-width: 56rem;
   margin-bottom: var(--space-md);
   font-size: var(--text-display);
   letter-spacing: -0.025em;
@@ -174,20 +203,62 @@
 }
 
 .hero__subtitle {
-  max-width: 42rem;
   margin-bottom: var(--space-xl);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .hero__note {
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  margin-top: var(--space-lg);
   font-family: var(--font-mono);
   font-size: var(--text-label);
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--color-on-surface);
+}
+
+/* Dá espaço para o card de estatística "vazar" por baixo da foto. `.media` recorta
+   o conteúdo (overflow: hidden) para arredondar a imagem; aqui isso precisa ceder
+   para o card não ser cortado, então o arredondamento passa para a própria imagem. */
+.media.hero__media {
+  margin-bottom: var(--space-lg);
+  overflow: visible;
+}
+
+.hero__media picture,
+.hero__media img {
+  border-radius: inherit;
+}
+
+.hero__stat-card {
+  position: absolute;
+  left: var(--space-lg);
+  bottom: calc(-1 * var(--space-lg));
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  max-width: 15rem;
+  padding: var(--space-md);
+  background-color: var(--color-surface-lowest);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-technical);
+  color: var(--color-on-surface);
+  font-size: var(--text-small);
+  font-weight: 600;
+  text-align: left;
+}
+
+.hero__stat-card .icon {
+  flex: none;
+  color: var(--color-accent);
 }
 
 /* --- Cartões ------------------------------------------------------------------ */

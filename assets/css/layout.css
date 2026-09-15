@@ -209,13 +209,13 @@
 }
 
 .section--dark {
-  background-color: var(--color-dark);
+  background-image: linear-gradient(165deg, #000000 0%, var(--color-dark) 55%, var(--color-graphite) 140%);
   color: var(--color-on-dark);
   border-block: 1px solid var(--color-dark-border);
 }
 
 .section--darker {
-  background-color: var(--color-darker);
+  background-image: linear-gradient(165deg, #000000 0%, var(--color-darker) 45%, var(--color-graphite) 150%);
   color: var(--color-on-dark);
   border-block: 1px solid var(--color-dark-border);
 }
@@ -251,22 +251,6 @@
 .section__header--wide .lead {
   max-width: 44rem;
   margin-inline: auto;
-}
-
-/* Fundos "planta baixa" — herdados do design original. */
-.blueprint-bg {
-  background-color: var(--color-surface);
-  background-image:
-    linear-gradient(var(--color-surface-highest) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-surface-highest) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
-.blueprint-bg--dark {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
 }
 
 /* --- Grades ------------------------------------------------------------------ */
@@ -327,7 +311,7 @@
 /* --- Rodapé ------------------------------------------------------------------ */
 
 .site-footer {
-  background-color: var(--color-darker);
+  background-image: linear-gradient(165deg, #000000 0%, var(--color-darker) 45%, var(--color-graphite) 150%);
   color: var(--color-inverse-on-surface);
   border-top: 1px solid var(--color-dark-border);
 }
