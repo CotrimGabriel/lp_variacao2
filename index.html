@@ -19,7 +19,7 @@
     Um pedido só para as quatro famílias. A API v2 exige os nomes em ordem
     alfabética; a resposta é idêntica à das duas requisições anteriores somadas.
   -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Montserrat:wght@700;800&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;family=Sora:wght@700;800&amp;display=swap">
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -160,28 +160,54 @@
 
   <main class="site-main">
     <!-- ===================== 1. Hero ===================== -->
-    <section class="hero blueprint-bg" id="inicio" aria-labelledby="titulo-hero">
-      <div class="hero__backdrop" aria-hidden="true"></div>
+    <section class="hero hero--dark hero--photo" id="inicio" aria-labelledby="titulo-hero">
+      <div class="container split hero__inner">
+        <div class="split__col split__col--half hero__content">
+          <span class="chip hero__badge">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-location-on"></use></svg>
+            Brasília/DF
+          </span>
 
-      <div class="container hero__inner">
-        <h1 class="hero__title" id="titulo-hero">
-          Seu imóvel<br class="br-desktop"> regularizado ou <span class="text-primary">seu dinheiro de volta</span> <br class="br-desktop">
-        </h1>
+          <h1 class="hero__title" id="titulo-hero">
+            Mais de uma década regularizando imóveis <span class="text-primary">no Distrito Federal</span>
+          </h1>
 
-        <p class="lead hero__subtitle">
-          Não deixe seu imóvel irregular te atrapalhar. A Meia-Um resolve do início
-          ao fim, com acompanhamento técnico e garantia de aprovação.
-        </p>
+          <p class="lead hero__subtitle">
+            Não deixe seu imóvel irregular te atrapalhar. A Meia-Um resolve do início
+            ao fim, com acompanhamento técnico e garantia de aprovação.
+          </p>
 
-        <a class="btn btn--accent btn--wide btn--block" href="#contato">
-          <svg class="icon" aria-hidden="true"><use href="#icone-forum"></use></svg>
-          Falar com especialista
-        </a>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="#contato">
+              <svg class="icon" aria-hidden="true"><use href="#icone-forum"></use></svg>
+              Falar com especialista
+            </a>
+            <a class="btn btn--outline" href="#situacoes">
+              Ver situações
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#icone-arrow-forward"></use></svg>
+            </a>
+          </div>
 
-        <p class="hero__note">
-          <svg class="icon icon--xs text-accent" aria-hidden="true"><use href="#icone-check-circle"></use></svg>
-          Visita para avaliação gratuita
-        </p>
+          <p class="hero__note">
+            <svg class="icon icon--xs text-accent" aria-hidden="true"><use href="#icone-check-circle"></use></svg>
+            Visita para avaliação gratuita
+          </p>
+        </div>
+
+        <div class="split__col split__col--half">
+          <figure class="media media--wide hero__media">
+            <img
+              src="img/mesa-projeto-hero.jpg"
+              alt="Capacete de engenharia sobre uma planta baixa arquitetônica, com trena, calculadora e régua sobre a mesa."
+              decoding="async"
+              width="1200"
+              height="896">
+            <figcaption class="hero__stat-card">
+              <svg class="icon" aria-hidden="true"><use href="#icone-insights"></use></svg>
+              Mais de uma década aprovando no DF.
+            </figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -238,7 +264,7 @@
     </section>
 
     <!-- ===================== 3. Diferenciais ===================== -->
-    <section class="section section--dark blueprint-bg--dark" id="diferenciais" aria-labelledby="titulo-diferenciais">
+    <section class="section section--dark" id="diferenciais" aria-labelledby="titulo-diferenciais">
       <div class="container">
         <div class="section__header">
           <h2 id="titulo-diferenciais">Por que a Meia-Um é a melhor escolha?</h2>
@@ -398,7 +424,7 @@
     </section>
 
     <!-- ===================== 5. Processo ===================== -->
-    <section class="section section--darker blueprint-bg--dark" id="processo" aria-labelledby="titulo-processo">
+    <section class="section section--darker" id="processo" aria-labelledby="titulo-processo">
       <div class="container container--narrow">
         <div class="section__header">
           <span class="eyebrow">Rigor metodológico</span>

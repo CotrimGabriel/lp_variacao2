@@ -35,6 +35,7 @@
   --color-darker: #080808;
   --color-dark-card: #141414;
   --color-dark-border: #333333;
+  --color-graphite: #434a4d;      /* tom do logo, usado no degradê dos fundos escuros */
   --color-on-dark: #ffffff;
   --color-on-dark-muted: #a0a0a0;
 
@@ -61,8 +62,8 @@
   --header-height: 80px;
 
   /* --- Tipografia --------------------------------------------------------- */
-  --font-headline: "Montserrat", "Poppins", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-headline: "Sora", "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
 
   /* Escalas fluidas: mesmos extremos mobile/desktop do layout original. */
